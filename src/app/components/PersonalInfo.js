@@ -31,6 +31,18 @@ export function PersonalInfo() {
                         </p>
                         <p className="text-lg font-medium text-[#38BDF8] mt-4">✅ Available for freelance & full-time work</p>
                     </div>
+
+                    {/* Download Resume Button */}
+                    <a 
+                        href="/Shehroz_Khan_Resume.pdf" 
+                        download
+                        className="inline-flex items-center mt-6 px-6 py-3 text-lg font-semibold text-white bg-[#38BDF8] rounded-lg shadow-lg hover:bg-[#0284C7] transition-all"
+                    >
+                        <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 16v-4m0 0V8m0 4l-3 3m3-3l3 3m-9 4h12" />
+                        </svg>
+                        Download Resume
+                    </a>
                 </div>
             </div>
         </section>
