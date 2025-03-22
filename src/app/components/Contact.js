@@ -1,8 +1,38 @@
+"use client"; // Add this to make it a Client Component
+import { useState } from "react";
 import Link from "next/link";
 import { FaEnvelope, FaPhone, FaGithub } from "react-icons/fa";
 
-// Contact.js
 export function Contact() {
+    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+    const [status, setStatus] = useState("");
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus("Sending...");
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setStatus("Message sent successfully!");
+                setFormData({ name: "", email: "", message: "" }); // Clear form
+            } else {
+                setStatus("Failed to send message.");
+            }
+        } catch (error) {
+            setStatus("Error sending message.");
+        }
+    };
+
     return (
         <section id="contact" className="py-20 bg-gradient-to-br from-[#0a0f1a] to-[#162238] text-white rounded-xl shadow-xl">
             <div className="max-w-5xl mx-auto px-6 md:px-12 text-center">
@@ -25,11 +55,38 @@ export function Contact() {
                 {/* Contact Form */}
                 <div className="mt-12 bg-[#1b2b48] p-8 rounded-xl shadow-lg text-left">
                     <h3 className="text-3xl font-semibold text-cyan-400 mb-6 text-center">Send a Message</h3>
-                    <form className="flex flex-col space-y-6">
-                        <input type="text" placeholder="Your Name" className="p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-400" required />
-                        <input type="email" placeholder="Your Email" className="p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-400" required />
-                        <textarea placeholder="Your Message" rows="5" className="p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-400" required></textarea>
-                        <button type="submit" className="px-6 py-3 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition text-lg font-semibold">Send Message</button>
+                    <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
+                        <input 
+                            type="text" 
+                            name="name" 
+                            value={formData.name} 
+                            onChange={handleChange} 
+                            placeholder="Your Name" 
+                            className="p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-400" 
+                            required 
+                        />
+                        <input 
+                            type="email" 
+                            name="email" 
+                            value={formData.email} 
+                            onChange={handleChange} 
+                            placeholder="Your Email" 
+                            className="p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-400" 
+                            required 
+                        />
+                        <textarea 
+                            name="message" 
+                            value={formData.message} 
+                            onChange={handleChange} 
+                            placeholder="Your Message" 
+                            rows="5" 
+                            className="p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-400" 
+                            required
+                        ></textarea>
+                        <button type="submit" className="px-6 py-3 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition text-lg font-semibold">
+                            Send Message
+                        </button>
+                        <p className="text-white text-center">{status}</p>
                     </form>
                 </div>
             </div>
