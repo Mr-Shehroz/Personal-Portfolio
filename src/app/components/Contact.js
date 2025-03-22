@@ -8,17 +8,17 @@ export function Contact() {
             <div className="max-w-5xl mx-auto px-6 md:px-12 text-center">
                 <h2 className="text-5xl font-bold text-cyan-400 mb-10">Get in Touch</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <Link href="mailto:your.email@example.com" className="flex flex-col items-center bg-[#1b2b48] p-6 rounded-xl shadow-lg transition transform hover:scale-105 hover:bg-cyan-500">
+                    <Link href="mailto:mr.shehroz.khan2006@gmail.com" className="flex flex-col items-center bg-[#1b2b48] p-6 rounded-xl shadow-lg transition transform hover:scale-105 hover:bg-cyan-500">
                         <FaEnvelope size={32} className="text-cyan-300 mb-3" />
-                        <span className="text-lg font-medium text-gray-200">your.email@example.com</span>
+                        <span className="text-lg font-medium text-gray-200">mr.shehroz.khan2006@gmail.com</span>
                     </Link>
-                    <Link href="tel:+1234567890" className="flex flex-col items-center bg-[#1b2b48] p-6 rounded-xl shadow-lg transition transform hover:scale-105 hover:bg-cyan-500">
+                    <Link href="tel:+923255706845" className="flex flex-col items-center bg-[#1b2b48] p-6 rounded-xl shadow-lg transition transform hover:scale-105 hover:bg-cyan-500">
                         <FaPhone size={32} className="text-cyan-300 mb-3" />
-                        <span className="text-lg font-medium text-gray-200">+123 456 7890</span>
+                        <span className="text-lg font-medium text-gray-200">+92 325 5706845</span>
                     </Link>
-                    <Link href="https://github.com/yourgithub" target="_blank" className="flex flex-col items-center bg-[#1b2b48] p-6 rounded-xl shadow-lg transition transform hover:scale-105 hover:bg-cyan-500">
+                    <Link href="https://github.com/Mr-Shehroz" target="_blank" className="flex flex-col items-center bg-[#1b2b48] p-6 rounded-xl shadow-lg transition transform hover:scale-105 hover:bg-cyan-500">
                         <FaGithub size={32} className="text-cyan-300 mb-3" />
-                        <span className="text-lg font-medium text-gray-200">github.com/yourgithub</span>
+                        <span className="text-lg font-medium text-gray-200">Mr-Shehroz</span>
                     </Link>
                 </div>
                 
