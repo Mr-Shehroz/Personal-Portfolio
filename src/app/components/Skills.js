@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 // Skills.js
 export function Skills() {
@@ -21,16 +24,44 @@ export function Skills() {
     ];
 
     return (
-        <section id="skills" className="py-20 bg-gradient-to-r from-[#0f172a] to-[#1e293b] text-white rounded-xl shadow-xl">
+        <motion.section
+            id="skills"
+            className="py-20 bg-gradient-to-r from-[#0f172a] to-[#1e293b] text-white rounded-xl shadow-xl"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+        >
             <div className="max-w-6xl mx-auto px-6 md:px-12 text-center">
-                <h2 className="text-4xl font-extrabold text-cyan-300 mb-12">Skills & Technologies</h2>
-                
+                <motion.h2
+                    className="text-4xl font-extrabold text-cyan-300 mb-12"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                    viewport={{ once: true }}
+                >
+                    Skills & Technologies
+                </motion.h2>
+
                 {/* Skills Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                <motion.div 
+                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={{
+                        visible: { transition: { staggerChildren: 0.1 } }
+                    }}
+                >
                     {skills.map((skill, index) => (
-                        <div 
-                            key={index} 
+                        <motion.div
+                            key={index}
                             className="flex flex-col items-center bg-gray-800 p-5 rounded-lg shadow-lg transition-all transform hover:scale-105 hover:shadow-2xl border border-gray-700"
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0 }
+                            }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
                         >
                             {/* Icon */}
                             <div className="relative w-16 h-16 bg-gray-900 p-3 rounded-full shadow-lg">
@@ -39,10 +70,10 @@ export function Skills() {
 
                             {/* Skill Name */}
                             <p className="text-lg font-semibold text-gray-300 mt-3">{skill.name}</p>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
-        </section>
+        </motion.section>
     );
 }

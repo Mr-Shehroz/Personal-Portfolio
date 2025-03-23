@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 // Projects.js
 export function Projects() {
@@ -28,21 +31,56 @@ export function Projects() {
     ];
 
     return (
-        <section id="projects" className="py-20 bg-gradient-to-r from-[#0f172a] to-[#1e293b] text-white rounded-xl shadow-xl">
+        <motion.section
+            id="projects"
+            className="py-20 bg-gradient-to-r from-[#0f172a] to-[#1e293b] text-white rounded-xl shadow-xl"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+        >
             <div className="max-w-6xl mx-auto px-6 md:px-12 text-center">
-                <h2 className="text-4xl font-extrabold text-cyan-300 mb-12">Projects</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                <motion.h2
+                    className="text-4xl font-extrabold text-cyan-300 mb-12"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                    viewport={{ once: true }}
+                >
+                    Projects
+                </motion.h2>
+
+                {/* Projects Grid */}
+                <motion.div
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={{
+                        visible: { transition: { staggerChildren: 0.2 } }
+                    }}
+                >
                     {projects.map((project, index) => (
-                        <div key={index} className="bg-[#1e293b] p-6 rounded-xl shadow-lg hover:scale-[1.03] transition duration-300 group">
+                        <motion.div
+                            key={index}
+                            className="bg-[#1e293b] p-6 rounded-xl shadow-lg hover:scale-[1.03] transition duration-300 group"
+                            variants={{
+                                hidden: { opacity: 0, y: 30 },
+                                visible: { opacity: 1, y: 0 }
+                            }}
+                            transition={{ duration: 0.6, ease: "easeOut" }}
+                        >
                             {/* Image Container */}
                             <div className="relative overflow-hidden rounded-lg shadow-lg">
-                                <Image 
-                                    src={project.image} 
-                                    alt={project.name} 
-                                    width={400} 
-                                    height={250} 
-                                    className="w-full h-52 object-cover transition-transform duration-300 group-hover:scale-110"
-                                />
+                                <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
+                                    <Image 
+                                        src={project.image} 
+                                        alt={project.name} 
+                                        width={400} 
+                                        height={250} 
+                                        className="w-full h-52 object-cover transition-transform duration-300 group-hover:scale-110"
+                                    />
+                                </motion.div>
                             </div>
 
                             {/* Project Details */}
@@ -61,15 +99,15 @@ export function Projects() {
                             </div>
 
                             {/* Live Demo Button */}
-                            <div className="mt-6">
+                            <motion.div className="mt-6" whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
                                 <Link href={project.liveDemo} target="_blank" className="inline-block px-5 py-2.5 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition duration-300 shadow-md">
                                     Live Demo
                                 </Link>
-                            </div>
-                        </div>
+                            </motion.div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
-        </section>
+        </motion.section>
     );
 }
