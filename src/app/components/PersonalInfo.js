@@ -80,7 +80,7 @@ export function PersonalInfo() {
                     <h2 className="text-5xl font-extrabold text-[#38BDF8] drop-shadow-lg">Shehroz Khan</h2>
 
                     {/* Typing Effect */}
-                    <div className="relative h-10 mt-2 text-2xl font-medium text-gray-300 flex items-center">
+                    <div className="relative h-10 mt-2 text-lg font-semibold text-gray-300 flex items-center">
                         <span className="text-[#38BDF8]">I am a </span>
                         <span className="ml-2">{currentTitle}</span>
                         {!typingFinished && (
