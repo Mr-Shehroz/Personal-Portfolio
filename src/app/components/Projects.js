@@ -15,11 +15,11 @@ export function Projects() {
             liveDemo: "https://full-stack-blog-rho.vercel.app/"
         },
         {
-            name: "E-Commerce Store",
-            description: "A fully functional e-commerce platform built with Shopify and custom Webflow design.",
-            techStack: ["Shopify", "Webflow", "JavaScript"],
-            image: "/ecommerce.avif",
-            liveDemo: "#"
+            name: "Admin Panel",
+            description: "A feature-rich admin dashboard for managing products, users, and orders with a sleek custom UI.",
+            techStack: ["Next.js", "Mongodb", "Tailwind CSS", "JavaScript"],
+            image: "/admin.png",
+            liveDemo: "https://full-admin-flame.vercel.app/"
         },
         {
             name: "Warehouse Management System",
