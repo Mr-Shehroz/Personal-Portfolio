@@ -22,6 +22,13 @@ export function Projects() {
             liveDemo: "https://full-admin-flame.vercel.app/"
         },
         {
+            name: "E-Commerce Website",
+            description: "A modern and responsive e-commerce website built with a custom UI, allowing users to browse products, manage their cart, and securely checkout with Stripe integration and Clerk authentication.",
+            techStack: ["Next.js", "TypeScript", "Sanity", "Tailwind CSS", "Stripe", "Clerk", "Redux Toolkit"],
+            image: "/ecommerce.avif",
+            liveDemo: "https://full-ecommerce-five-inky.vercel.app/"
+        },
+        {
             name: "Warehouse Management System",
             description: "A stock management application for warehouses with real-time updates and history tracking.",
             techStack: ["Next.js", "Sanity CMS", "Node.js"],
@@ -73,11 +80,11 @@ export function Projects() {
                             {/* Image Container */}
                             <div className="relative overflow-hidden rounded-lg shadow-lg">
                                 <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
-                                    <Image 
-                                        src={project.image} 
-                                        alt={project.name} 
-                                        width={400} 
-                                        height={250} 
+                                    <Image
+                                        src={project.image}
+                                        alt={project.name}
+                                        width={400}
+                                        height={250}
                                         className="w-full h-52 object-cover transition-transform duration-300 group-hover:scale-110"
                                     />
                                 </motion.div>
