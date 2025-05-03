@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -14,23 +15,26 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
         >
-            {/* Logo */}
-            <motion.h1 
-                className="text-4xl font-extrabold tracking-wide text-[#38BDF8] drop-shadow-lg"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            >
-                Shehroz Khan
-            </motion.h1>
+
+            <Link href="/">
+                <motion.a
+                    className="text-4xl font-extrabold tracking-wide text-[#38BDF8] drop-shadow-lg"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                >
+                    Shehroz Khan
+                </motion.a>
+            </Link>
+
 
             {/* Desktop Navigation */}
             <nav className="hidden md:block">
                 <ul className="flex gap-8 text-lg font-medium">
                     {["About", "Skills", "Projects", "Contact"].map((item, index) => (
-                        <motion.li 
-                            key={item} 
-                            whileHover={{ scale: 1.1 }} 
+                        <motion.li
+                            key={item}
+                            whileHover={{ scale: 1.1 }}
                             transition={{ duration: 0.2 }}
                         >
                             <a href={`#${item.toLowerCase()}`} className="hover:text-[#38BDF8] transition-all">
@@ -42,8 +46,8 @@ export function Header() {
             </nav>
 
             {/* Mobile Menu Button */}
-            <motion.button 
-                onClick={() => setMenuOpen(!menuOpen)} 
+            <motion.button
+                onClick={() => setMenuOpen(!menuOpen)}
                 className="md:hidden text-2xl"
                 animate={{ rotate: menuOpen ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
@@ -54,7 +58,7 @@ export function Header() {
             {/* Mobile Menu */}
             <AnimatePresence>
                 {menuOpen && (
-                    <motion.nav 
+                    <motion.nav
                         className="absolute top-full left-0 w-full bg-[#0F172A] p-6 rounded-b-xl shadow-xl md:hidden"
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -63,14 +67,14 @@ export function Header() {
                     >
                         <ul className="flex flex-col gap-6 text-center text-lg font-medium">
                             {["About", "Skills", "Projects", "Contact"].map((item) => (
-                                <motion.li 
-                                    key={item} 
-                                    whileHover={{ scale: 1.1 }} 
+                                <motion.li
+                                    key={item}
+                                    whileHover={{ scale: 1.1 }}
                                     transition={{ duration: 0.2 }}
                                 >
-                                    <a 
-                                        href={`#${item.toLowerCase()}`} 
-                                        className="hover:text-[#38BDF8]" 
+                                    <a
+                                        href={`#${item.toLowerCase()}`}
+                                        className="hover:text-[#38BDF8]"
                                         onClick={() => setMenuOpen(false)}
                                     >
                                         {item}
