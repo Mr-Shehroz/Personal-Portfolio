@@ -57,7 +57,7 @@ export function Contact() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 overflow-hidden">
                     {[
-                        { icon: <FaEnvelope size={32} />, text: "mr.shehroz.khan2006@gmail.com", href: "mailto:mr.shehroz.khan2006@gmail.com" },
+                        { icon: <FaEnvelope size={32} />, text: "mr.shehroz.khan2006 @gmail.com", href: "mailto:mr.shehroz.khan2006@gmail.com" },
                         { icon: <FaPhone size={32} />, text: "+92 325 5706845", href: "tel:+923255706845" },
                         { icon: <FaGithub size={32} />, text: "Mr-Shehroz", href: "https://github.com/Mr-Shehroz" }
                     ].map((item, index) => (
